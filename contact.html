@@ -84,24 +84,26 @@
                         <div class="shadow-box">
                             <img src="assets/images/icon3-2.png" alt="Icon">
                             <h1>Let’s work <span>together.</span></h1>
-                            <form id="contact-form">
-                                <input type="hidden" name="csrf_token" id="csrf-token">
-                                <div class="input-group">
-                                    <input type="text" name="full-name" id="full-name" placeholder="Name *" required>
-                                </div>
-                                <div class="input-group">
-                                    <input type="email" name="email" id="email" placeholder="Email *" required>
-                                </div>
-                                <div class="input-group">
-                                    <input type="text" name="subject" id="subject" placeholder="Subject *" required>
-                                </div>
-                                <div class="input-group">
-                                    <textarea name="message" id="message" placeholder="Message *" required></textarea>
-                                </div>
-                                <div class="input-group">
-                                    <button class="theme-btn submit-btn" type="submit" id="submit-button">Send Message</button>
-                                </div>
-                            </form>
+							
+								<form id="contact-form" action="https://www.androfast.com/mailer.php" method="POST">
+									<input type="hidden" name="csrf_token" id="csrf-token">
+									<div class="input-group">
+										<input type="text" name="full-name" id="full-name" placeholder="Name *" required>
+									</div>
+									<div class="input-group">
+										<input type="email" name="email" id="email" placeholder="Email *" required>
+									</div>
+									<div class="input-group">
+										<input type="text" name="subject" id="subject" placeholder="Subject *" required>
+									</div>
+									<div class="input-group">
+										<textarea name="message" id="message" placeholder="Message *" required></textarea>
+									</div>
+									<div class="input-group">
+										<button class="theme-btn submit-btn" type="submit" id="submit-button">Send Message</button>
+									</div>
+								</form>
+
                             <!-- Mensaje de Confirmación -->
                             <div id="response-message" style="display:none; margin-top: 15px;"></div>
                         </div>
@@ -131,45 +133,67 @@
 
     </main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("contact-form");
-            const csrfInput = document.getElementById("csrf-token");
-            const responseMessage = document.getElementById("response-message");
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contact-form");
+        const csrfInput = document.getElementById("csrf-token");
+        const responseMessage = document.getElementById("response-message");
 
-            form.addEventListener("submit", function (e) {
-                e.preventDefault(); // Prevenir el envío automático del formulario
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevenir el envío automático del formulario
 
-                // Solicitar token CSRF antes de enviar
-                fetch("https://www.androfast.com/mailer.php", { method: "GET" })
-                    .then(response => response.json())
-                    .then(data => {
-                        csrfInput.value = data.csrf_token; // Insertar token en el formulario
-                        
-                        // Crear los datos del formulario
-                        const formData = new FormData(form);
+            // Solicitar token CSRF antes de enviar el formulario
+            fetch("https://www.androfast.com/mailer.php", {
+                method: "GET",
+                credentials: "include" // Incluir cookies para mantener la sesión
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error al obtener el token CSRF.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.csrf_token) {
+                        throw new Error("Token CSRF no recibido.");
+                    }
 
-                        // Enviar la solicitud POST
-                        return fetch("https://www.androfast.com/mailer.php", {
-                            method: "POST",
-                            body: formData,
-                        });
-                    })
-                    .then(response => response.text())
-                    .then(data => {
-                        responseMessage.style.display = "block";
-                        responseMessage.style.color = "green";
-                        responseMessage.textContent = "Your message was sent successfully.";
-                        form.reset();
-                    })
-                    .catch(error => {
-                        responseMessage.style.display = "block";
-                        responseMessage.style.color = "red";
-                        responseMessage.textContent = "There was an error sending your message. Please try again.";
+                    csrfInput.value = data.csrf_token; // Insertar token en el formulario
+
+                    // Crear los datos del formulario
+                    const formData = new FormData(form);
+
+                    // Enviar la solicitud POST al servidor
+                    return fetch("https://www.androfast.com/mailer.php", {
+                        method: "POST",
+                        body: formData,
+                        credentials: "include" // Incluir cookies para mantener la sesión
                     });
-            });
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error al enviar el formulario.");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Mostrar mensaje de éxito
+                    responseMessage.style.display = "block";
+                    responseMessage.style.color = "green";
+                    responseMessage.textContent = "Your message was sent successfully.";
+                    form.reset();
+                })
+                .catch(error => {
+                    // Mostrar mensaje de error
+                    console.error("Error:", error);
+                    responseMessage.style.display = "block";
+                    responseMessage.style.color = "red";
+                    responseMessage.textContent = "There was an error sending your message. Please try again.";
+                });
         });
-    </script>
+    });
+</script>
+
 
     <script src="assets/js/jquery-3.6.4.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
