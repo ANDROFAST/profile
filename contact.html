@@ -84,7 +84,7 @@
                         <div class="shadow-box">
                             <img src="assets/images/icon3-2.png" alt="Icon">
                             <h1>Let’s work <span>together.</span></h1>
-                            <form method="POST" action="https://www.androfast.com/mailer.php" id="contact-form">
+                            <form id="contact-form">
                                 <input type="hidden" name="csrf_token" id="csrf-token">
                                 <div class="input-group">
                                     <input type="text" name="full-name" id="full-name" placeholder="Name *" required>
@@ -99,9 +99,11 @@
                                     <textarea name="message" id="message" placeholder="Message *" required></textarea>
                                 </div>
                                 <div class="input-group">
-                                    <button class="theme-btn submit-btn" type="submit" id="submit-button" disabled>Send Message</button>
+                                    <button class="theme-btn submit-btn" type="submit" id="submit-button">Send Message</button>
                                 </div>
                             </form>
+                            <!-- Mensaje de Confirmación -->
+                            <div id="response-message" style="display:none; margin-top: 15px;"></div>
                         </div>
                     </div>
                 </div>
@@ -131,31 +133,41 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("contact-form");
             const csrfInput = document.getElementById("csrf-token");
-            const submitButton = document.getElementById("submit-button");
+            const responseMessage = document.getElementById("response-message");
 
-            // Deshabilitar el botón de envío hasta que se cargue el token
-            submitButton.disabled = true;
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevenir el envío automático del formulario
 
-            // Solicitar el token CSRF al servidor
-            fetch('https://www.androfast.com/mailer.php', { method: 'GET' })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Error al obtener el token CSRF.");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.csrf_token) {
-                        csrfInput.value = data.csrf_token;
-                        submitButton.disabled = false; // Habilitar el botón de envío
-                    } else {
-                        console.error("Token CSRF no recibido.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error al obtener el token CSRF:", error);
-                });
+                // Solicitar token CSRF antes de enviar
+                fetch("https://www.androfast.com/mailer.php", { method: "GET" })
+                    .then(response => response.json())
+                    .then(data => {
+                        csrfInput.value = data.csrf_token; // Insertar token en el formulario
+                        
+                        // Crear los datos del formulario
+                        const formData = new FormData(form);
+
+                        // Enviar la solicitud POST
+                        return fetch("https://www.androfast.com/mailer.php", {
+                            method: "POST",
+                            body: formData,
+                        });
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        responseMessage.style.display = "block";
+                        responseMessage.style.color = "green";
+                        responseMessage.textContent = "Your message was sent successfully.";
+                        form.reset();
+                    })
+                    .catch(error => {
+                        responseMessage.style.display = "block";
+                        responseMessage.style.color = "red";
+                        responseMessage.textContent = "There was an error sending your message. Please try again.";
+                    });
+            });
         });
     </script>
 
