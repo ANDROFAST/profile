@@ -8,14 +8,10 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <!--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
     <link href="assets/css/inter-fonts.css" rel="stylesheet">
-
     <link rel="stylesheet" href="assets/css/iconoir.css">
-
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/aos.css">
-
     <link rel="stylesheet" href="assets/css/style-light.css">
 </head>
 <body>
@@ -27,9 +23,8 @@
             <div class="container">
                 <div class="gx-row d-flex align-items-center justify-content-between">
                     <a href="index.html" class="logo">
-                        <img src="assets/images/alex_dev.png" alt="Logo"  style="max-width: 30%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+                        <img src="assets/images/alex_dev.png" alt="Logo" style="max-width: 30%; height: auto; display: block; margin-left: auto; margin-right: auto;">
                     </a>
-
                     <nav class="navbar">
                         <ul class="menu">
                             <li><a href="index.html">Home</a></li>
@@ -38,9 +33,7 @@
                         </ul>
                         <a href="contact.html" class="theme-btn">Let's talk</a>
                     </nav>
-
                     <a href="contact.html" class="theme-btn">Let's talk</a>
-
                     <div class="show-menu">
                         <span></span>
                         <span></span>
@@ -67,7 +60,6 @@
                                     <h4>administracion@androfast.com</h4>
                                 </div>
                             </li>
-
                             <li class="d-flex align-items-center" data-aos="zoom-in">
                                 <div class="icon-box shadow-box">
                                     <i class="iconoir-phone"></i>
@@ -77,16 +69,6 @@
                                     <h4>+51 917141308</h4>
                                 </div>
                             </li>
-<!-- 
-                            <li class="d-flex align-items-center" data-aos="zoom-in">
-                                <div class="icon-box shadow-box">
-                                    <i class="iconoir-pin-alt"></i>
-                                </div>
-                                <div class="right">
-                                    <span>Location</span>
-                                    <h4>22 Baker Street, Texas <br>United States <br>W1U 3BW</h4>
-                                </div>
-                            </li>-->
                         </ul>
 
                         <h3 data-aos="fade-up">Social Info</h3>
@@ -102,44 +84,36 @@
                         <div class="shadow-box">
                             <img src="assets/images/icon3-2.png" alt="Icon">
                             <h1>Let’s work <span>together.</span></h1>
-							<?php
-							// Generar un token CSRF único por sesión
-							session_start();
-							$csrf_token = bin2hex(random_bytes(32));
-							$_SESSION['csrf_token'] = $csrf_token;
-							?>
-							<form method="POST" action="mailer.php">
-								<input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
-								<div class="input-group">
-									<input type="text" name="full-name" id="full-name" placeholder="Name *" required>
-								</div>
-								<div class="input-group">
-									<input type="email" name="email" id="email" placeholder="Email *" required>
-								</div>
-								<div class="input-group">
-									<input type="text" name="subject" id="subject" placeholder="Subject *" required>
-								</div>
-								<div class="input-group">
-									<textarea name="message" id="message" placeholder="Message *" required></textarea>
-								</div>
-								<div class="input-group">
-									<button class="theme-btn submit-btn" type="submit">Send Message</button>
-								</div>
-							</form>
+                            <form method="POST" action="https://www.androfast.com/mailer.php" id="contact-form">
+                                <input type="hidden" name="csrf_token" id="csrf-token">
+                                <div class="input-group">
+                                    <input type="text" name="full-name" id="full-name" placeholder="Name *" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="email" name="email" id="email" placeholder="Email *" required>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="subject" id="subject" placeholder="Subject *" required>
+                                </div>
+                                <div class="input-group">
+                                    <textarea name="message" id="message" placeholder="Message *" required></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <button class="theme-btn submit-btn" type="submit" id="submit-button" disabled>Send Message</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
-
 
         <!-- Footer -->
         <footer class="footer-area">
             <div class="container">
                 <div class="footer-content text-center">
                     <a href="index.html" class="logo">
-                        <img src="assets/images/alex_dev.png" alt="Logo"  style="max-width: 30%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+                        <img src="assets/images/alex_dev.png" alt="Logo" style="max-width: 30%; height: auto; display: block; margin-left: auto; margin-right: auto;">
                     </a>
                     <ul class="footer-menu">
                         <li><a href="index.html">Home</a></li>
@@ -154,7 +128,36 @@
         </footer>
 
     </main>
-    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const csrfInput = document.getElementById("csrf-token");
+            const submitButton = document.getElementById("submit-button");
+
+            // Deshabilitar el botón de envío hasta que se cargue el token
+            submitButton.disabled = true;
+
+            // Solicitar el token CSRF al servidor
+            fetch('https://www.androfast.com/mailer.php', { method: 'GET' })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error al obtener el token CSRF.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.csrf_token) {
+                        csrfInput.value = data.csrf_token;
+                        submitButton.disabled = false; // Habilitar el botón de envío
+                    } else {
+                        console.error("Token CSRF no recibido.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al obtener el token CSRF:", error);
+                });
+        });
+    </script>
 
     <script src="assets/js/jquery-3.6.4.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
