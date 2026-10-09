@@ -1,268 +1,433 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexcesdev - Personal Portfolio</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <!--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-    <link href="assets/css/inter-fonts.css" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="assets/css/iconoir.css">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/aos.css">
-
-    <link rel="stylesheet" href="assets/css/style-light.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portafolio de Alex Céspedes Sánchez, Software Engineer y Mobile Squad Lead especializado en Android, Kotlin y React Native.">
+  <meta name="theme-color" content="#0f766e">
+  <title>Alex Céspedes Sánchez | Mobile Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark">AC</span>
+      <span>Alex Céspedes</span>
+    </a>
 
-    <main class="main-homepage">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="sr-only">Abrir menú</span>
+    </button>
 
-        <!-- Header -->
-        <header class="header-area">
-            <div class="container">
-                <div class="gx-row d-flex align-items-center justify-content-between">
-                    <a href="index.html" class="logo">
-                       <img src="assets/images/alex_dev.png" alt="Logo"  style="max-width: 40%; height: auto;">
-                    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
 
-                    <nav class="navbar">
-                        <ul class="menu">
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                        <a href="contact.html" class="theme-btn">Let's talk</a>
-                    </nav>
+  <main>
+    <section class="hero section-shell" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Mobile Software Engineer</p>
+        <h1>Construyo apps Android sólidas, útiles y listas para crecer.</h1>
+        <p class="hero-text">
+          Soy Alex Céspedes Sánchez, ingeniero de sistemas con más de 9 años de experiencia
+          creando aplicaciones Android nativas, soluciones con React Native y plataformas
+          técnicas como Androfast.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#proyectos">Ver proyectos</a>
+          <a class="button secondary" href="CV_Alex_Cespedes_Sanchez.pdf" target="_blank" rel="noreferrer">Descargar CV</a>
+        </div>
+      </div>
 
-                    <a href="contact.html" class="theme-btn">Let's talk</a>
+      <div class="hero-panel" aria-label="Resumen profesional">
+        <div class="availability">
+          <span></span>
+          Disponible para proyectos móviles
+        </div>
+        <img src="assets/alex-cespedes-profile.jpg" alt="Foto profesional de Alex Céspedes Sánchez" class="hero-photo">
+        <div class="quick-stats">
+          <article>
+            <strong>9+</strong>
+            <span>años creando software</span>
+          </article>
+          <article>
+            <strong>Android</strong>
+            <span>Kotlin, Java, MVVM, APIs</span>
+          </article>
+          <article>
+            <strong>Lead</strong>
+            <span>Squad móvil y estándares</span>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                    <div class="show-menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </header>
+    <section class="section-shell intro-grid" aria-label="Especialidades">
+      <article>
+        <span class="section-kicker">Enfoque</span>
+        <h2>Arquitectura móvil con sentido práctico.</h2>
+      </article>
+      <p>
+        Trabajo desde la definición técnica hasta la entrega: arquitectura Android, consumo de APIs,
+        persistencia local, rendimiento, integración backend y acompañamiento a equipos. Me gusta
+        que el código sea claro hoy y sostenible dentro de seis meses.
+      </p>
+    </section>
 
-        <!-- About -->
-        <section class="about-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6" data-aos="zoom-in">
-                        <div class="about-me-box shadow-box">
-                            <a class="overlay-link" href="about.html"></a>
-                            <div class="img-box">
-                                <img src="assets/images/alexdev.png" alt="About Me">
-                            </div>
-                            <div class="infos">
-                                <h4> ANDROID DEVELOPER</h4>
-                                <h1>Alex Cespedes.</h1>
-                                <p>I am a Android Developer in Chiclayo, Perú.</p>
-                                <a href="index.html#" class="about-btn">
-                                    <img src="assets/images/icon-2.svg" alt="Button">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+    <section class="section-shell" id="proyectos">
+      <div class="section-heading">
+        <span class="section-kicker">Trabajo destacado</span>
+        <h2>Proyectos</h2>
+      </div>
 
-                    <div class="col-md-6">
-                        <div class="about-credentials-wrap">
-                            <div data-aos="zoom-in">
-                                <div class="banner shadow-box">
-                                    <div class="marquee">
-                                        <div>
-                                          <span>LATEST WORK AND <b>FEATURED</b> <img src="assets/images/star1.svg" alt="Star"> LATEST WORK AND <b>FEATURED</b> <img src="assets/images/star1.svg" alt="Star"> LATEST WORK AND <b>FEATURED</b> <img src="assets/images/star1.svg" alt="Star"> LATEST WORK AND <b>FEATURED</b> LATEST WORK AND <img src="assets/images/star1.svg" alt="Star"> LATEST WORK AND <b>FEATURED</b> LATEST WORK AND <img src="assets/images/star1.svg" alt="Star"></span>
-                                        </div>
-                                      </div>
-                                </div>
+      <div class="project-grid">
+        <article class="project-card featured">
+          <a class="project-image-link" href="https://www.androfast.com" target="_blank" rel="noreferrer" aria-label="Visitar Androfast">
+            <img class="project-visual" src="assets/androfast-homepage-showcase.png" alt="Diseño promocional de la página inicial de Androfast">
+          </a>
+          <div>
+            <p class="project-label">Producto propio</p>
+            <h3>Androfast</h3>
+            <p>
+              Sitio técnico en español sobre Android, tutoriales, soluciones y herramientas
+              para desarrolladores. Combina contenido educativo con recursos prácticos.
+            </p>
+          </div>
+          <a href="https://www.androfast.com" target="_blank" rel="noreferrer">Visitar sitio</a>
+        </article>
 
-                            </div>
+        <article class="project-card store-card">
+          <a class="project-image-link" href="https://play.google.com/store/apps/details?id=com.whiteliontechnology.transporte.yanacocha" target="_blank" rel="noreferrer" aria-label="Ver Yanacocha Transporte en Google Play">
+            <img class="project-visual" src="assets/yanacocha-transporte.png" alt="Imagen promocional de Yanacocha Transporte para control de embarque y desembarque">
+          </a>
+          <div>
+            <p class="project-label">White Lion Technology / Minería</p>
+            <h3>Yanacocha Transporte</h3>
+            <p>
+              Aplicación Android para optimizar y controlar el embarque y desembarque en operaciones
+              de transporte corporativo. Incluye validación de identidad, control de pasajeros y
+              soporte para operación online/offline.
+            </p>
+          </div>
+          <div class="project-meta">
+            <span>Android</span>
+            <span>Control operativo</span>
+            <span>Escaneo de credenciales</span>
+          </div>
+          <a href="https://play.google.com/store/apps/details?id=com.whiteliontechnology.transporte.yanacocha" target="_blank" rel="noreferrer">Ver en Google Play</a>
+        </article>
 
-                            <div class="gx-row d-flex gap-24">
-                                <div data-aos="zoom-in">
-                                    <div class="about-crenditials-box info-box shadow-box h-full">
-                                        <a class="overlay-link" href="credentials.html"></a>
-                                        <img src="assets/images/sign.png" alt="Sign">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div class="infos">
-                                                <h4>more about me</h4>
-                                                <h1>Credentials</h1>
-                                            </div>
-    
-                                            <a href="credentials.html" class="about-btn">
-                                                <img src="assets/images/icon-2.svg" alt="Button">
-                                            </a>
-    
-                                        </div>
-                                    </div>
-                                </div>
+        <article class="project-card store-card">
+          <a class="project-image-link" href="https://www.locface.net/login" target="_blank" rel="noreferrer" aria-label="Ver LocFace">
+            <img class="project-visual" src="assets/locface-recognition-showcase.png" alt="Imagen promocional de LocFace con un celular realizando reconocimiento facial para control de acceso">
+          </a>
+          <div>
+            <p class="project-label">Reconocimiento facial</p>
+            <h3>LocFace</h3>
+            <p>
+              Plataforma de reconocimiento facial para control de acceso, con aplicación Android,
+              panel web, API segura, administración de personas y backend Node.js/Express sobre PostgreSQL.
+            </p>
+          </div>
+          <div class="project-meta">
+            <span>Android</span>
+            <span>Node.js</span>
+            <span>PostgreSQL</span>
+            <span>API segura</span>
+          </div>
+          <a href="https://www.locface.net/login" target="_blank" rel="noreferrer">Ver sitio</a>
+        </article>
 
-                                <div data-aos="zoom-in">
-                                    <div class="about-project-box info-box shadow-box h-full">
-                                        <a class="overlay-link" href=""></a>
-                                        <img src="assets/images/my-works.png" alt="My Works">
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div class="infos">
-                                                <h4>SHOWCASE</h4>
-                                                <h1>Projects</h1>
-                                            </div>
-    
-                                            <a href="index.html#" class="about-btn">
-                                                <img src="assets/images/icon-2.svg" alt="Button">
-                                            </a>
-    
-                                        </div>
-                                    </div>
-                                </div>
+        <article class="project-card store-card">
+          <a class="project-image-link" href="https://play.google.com/store/apps/details?id=com.whitelion.newaccesos.owens" target="_blank" rel="noreferrer" aria-label="Ver New Accesos Owens en Google Play">
+            <img class="project-visual" src="assets/control-accesos-marcaciones.png" alt="Imagen promocional de control de accesos, marcaciones y sincronización online/offline">
+          </a>
+          <div>
+            <p class="project-label">White Lion Technology / Accesos</p>
+            <h3>New Accesos Owens</h3>
+            <p>
+              Aplicación Android publicada en Google Play para procesos de acceso y validación
+              operativa. Participé desde White Lion Technology en el desarrollo móvil orientado
+              a uso empresarial.
+            </p>
+          </div>
+          <div class="project-meta">
+            <span>Android</span>
+            <span>Accesos</span>
+            <span>Operación empresarial</span>
+          </div>
+          <a href="https://play.google.com/store/apps/details?id=com.whitelion.newaccesos.owens" target="_blank" rel="noreferrer">Ver en Google Play</a>
+        </article>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <article class="project-card">
+          <img class="project-visual" src="assets/siade-pescado-mockup.png" alt="Mockup de una app Android para reconocer si un pescado es apto o no apto para consumo">
+          <p class="project-label">Android / IA</p>
+          <h3>SIADE</h3>
+          <p>
+            Aplicación Android para reconocer si un pescado es apto o no apto para el consumo,
+            integrando TensorFlow Lite, Python, backend PHP, MySQL y flujos de validación en campo
+            basados en evaluación sensorial y el método QIM.
+          </p>
+          <a href="assets/certificado-ama-siade.pdf" target="_blank" rel="noreferrer">Ver certificado</a>
+        </article>
 
-                <div class="row mt-24">
-                    <div class="col-md-12">
-                        <div class="blog-service-profile-wrap d-flex gap-24">
-                            <div data-aos="zoom-in">
-                                <div class="about-blog-box info-box shadow-box h-full">
-                                    <a href="https://androfast.com" target="_blank" class="overlay-link"></a>
-                                    <img src="assets/images/androfast.png" alt="ANDROFAST">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="infos">
-                                            <h4>Blog</h4>
-                                            <h3 class="name">ANDROFAST</h3>
-                                        </div>
-                                        <a href="https://www.androfast.com/" target="_blank" class="about-btn">
-                                            <img src="assets/images/icon-2.svg" alt="Button">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+        <article class="project-card">
+          <img class="project-visual" src="assets/turnero-digital-mockup.png" alt="Mockup de una app Android de turnos para atención hospitalaria">
+          <p class="project-label">Municipalidad</p>
+          <h3>Turnero Digital</h3>
+          <p>
+            Aplicación Android para entregar turnos a las personas que llegan a atenderse al
+            hospital, evitando colas y reduciendo la necesidad de sacar citas presencialmente.
+          </p>
+          <a href="assets/certificado-turnero-cruz-del-eje.pdf" target="_blank" rel="noreferrer">Ver certificado</a>
+        </article>
 
-                            <div data-aos="zoom-in" class="flex-1">
-                                <div class="about-services-box info-box shadow-box h-full">
-                                    <a href="service.html" class="overlay-link"></a>
-                                    <div class="icon-boxes">
-                                        <i class="iconoir-computer"></i>
-                                        <i class="iconoir-code
-                                        icon"></i>
-                                        <i class="iconoir-database-settings icon"></i>
-                                        <i class="iconoir-key-command icon"></i>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="infos">
-                                            <h4>specialization</h4>
-                                            <h1>Services Offering</h1>
-                                        </div>
-    
-                                        <a href="service.html" class="about-btn">
-                                            <img src="assets/images/icon-2.svg" alt="Button">
-                                        </a>
-    
-                                    </div>
-                                </div>
-                            </div>
+        <article class="project-card">
+          <a class="project-image-link" href="https://play.google.com/store/apps/details?id=com.whitelion.newaccesos.owens" target="_blank" rel="noreferrer" aria-label="Ver sistema de accesos y marcaciones en Google Play">
+            <img class="project-visual" src="assets/control-accesos-marcaciones.png" alt="Mockup de sistema Android para accesos, asistencia, marcaciones y transporte">
+          </a>
+          <p class="project-label">Control operativo</p>
+          <h3>Accesos, asistencia y transporte</h3>
+          <p>
+            Desarrollo de soluciones Android para control de acceso online/offline, asistencia,
+            validación de personal y operaciones de transporte. Estos sistemas se enfocaban en
+            operar en campo incluso con conectividad limitada.
+          </p>
+          <div class="project-meta">
+            <span>Online/offline</span>
+            <span>Transporte</span>
+            <span>Asistencia</span>
+            <span>Accesos</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-                            <div data-aos="zoom-in">
-                                <div class="about-profile-box info-box shadow-box h-full">
-                                    <div class="inner-profile-icons shadow-box">
-                                        <a href="https://www.linkedin.com/in/alex-cespedes-sanchez-4b2874115/" target="_blank">
-                                            <i class="iconoir-linkedin"></i>
-                                        </a>
-                                        <a href="https://github.com/ANDROFAST" target="_blank">
-                                            <i class="iconoir-github"></i>
-                                        </a>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="infos">
-                                            <h4>Stay with me</h4>
-                                            <h1>Profiles</h1>
-                                        </div>
-    
-                                        <a href="contact.html" class="about-btn">
-                                            <img src="assets/images/icon-2.svg" alt="Button">
-                                        </a>
-    
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                </div>
+    <section class="section-shell services-section" id="servicios">
+      <div class="section-heading">
+        <span class="section-kicker">Qué puedo construir</span>
+        <h2>Servicios</h2>
+      </div>
 
-                <div class="row mt-24">
-                    <div class="col-md-6" data-aos="zoom-in">
-                            
-                        <div class="about-client-box info-box shadow-box">
-                            <div class="clients d-flex align-items-start gap-24 justify-content-center">
-                                <div class="client-item">
-                                    <h1>08</h1>
-                                    <p>Years <br>Experience</p>
-                                </div>
+      <div class="services-grid">
+        <article>
+          <h3>Aplicaciones Android nativas</h3>
+          <p>
+            Desarrollo con Kotlin y Java, arquitectura MVVM/Clean Architecture, Retrofit,
+            persistencia local y patrones pensados para escalabilidad y mantenimiento.
+          </p>
+        </article>
 
-                                <div class="client-item">
-                                    <h1>+10</h1>
-                                    <p>CLIENTS <br>WORLDWIDE</p>
-                                </div>
+        <article>
+          <h3>Integración backend y APIs</h3>
+          <p>
+            Consumo e integración de APIs REST/SOAP, creación de servicios con .NET/PHP
+            y conexión sólida entre aplicaciones móviles, reglas de negocio y datos.
+          </p>
+        </article>
 
-                                <div class="client-item">
-                                    <h1>+35</h1>
-                                    <p>Total <br>Projects</p>
-                                </div>
-                            </div>
-                        </div>
+        <article>
+          <h3>Datos y operación en campo</h3>
+          <p>
+            Modelado y optimización con SQL Server, MySQL, SQLite y Realm, incluyendo
+            escenarios online/offline para transporte, asistencia y control de accesos.
+          </p>
+        </article>
+      </div>
+    </section>
 
-                    </div>
-                    <div class="col-md-6" data-aos="zoom-in">
-                            
-                        <div class="about-contact-box info-box shadow-box">
-                            <a class="overlay-link" href="contact.html"></a>
-                            <img src="assets/images/icon2-2.png" alt="Icon" class="star-icon">
-                            <h1>Let's <br>work <span>together.</span></h1>
-                            <a href="index.html#" class="about-btn">
-                                <img src="assets/images/icon-2.svg" alt="Button">
-                            </a>
-                        </div>
+    <section class="section-shell split-section" id="experiencia">
+      <div class="section-heading">
+        <span class="section-kicker">Trayectoria</span>
+        <h2>Experiencia</h2>
+      </div>
 
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="timeline">
+        <article>
+          <span>Oct. 2019 - Actualidad</span>
+          <h3>Software Engineer / Mobile Squad Lead</h3>
+          <p>White Lion Technology - Remoto, Lima</p>
+          <ul>
+            <li>Liderazgo de squad móvil y definición de arquitectura.</li>
+            <li>Desarrollo Android con Kotlin/Java y soluciones React Native.</li>
+            <li>Creación y mantenimiento de APIs con C#/.NET y procedimientos SQL Server.</li>
+            <li>Integración entre frontend móvil, backend, persistencia local y buenas prácticas MVVM/SOLID.</li>
+          </ul>
+        </article>
 
-        <!-- Footer -->
-        <footer class="footer-area">
-            <div class="container">
-                <div class="footer-content text-center">
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/alex_dev.png" alt="Logo"  style="max-width: 30%; height: auto; display: block; margin-left: auto; margin-right: auto;">
-                    </a>
-                    <ul class="footer-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                    <p class="copyright">
-                        &copy; All rights reserved by <span> Alex Cespedes - Androfast</span>
-                    </p>
-                </div>
-            </div>
-        </footer>
+        <article>
+          <span>Abr. 2022 - Oct. 2022</span>
+          <h3>Desarrollador Android</h3>
+          <p>AMA - Proyecto SIADE</p>
+          <ul>
+            <li>Integración de modelos de IA con TensorFlow Lite.</li>
+            <li>Conexión entre app Android, backend PHP y MySQL.</li>
+          </ul>
+        </article>
 
-    </main>
-    
+        <article>
+          <span>2016 - 2019</span>
+          <h3>Desarrollador móvil</h3>
+          <p>Peru Apps, Virtual 3D Sistemas Corporativos y Sistemas Info24</p>
+          <ul>
+            <li>Apps Android nativas, geolocalización, APIs y bases de datos.</li>
+            <li>Mantenimiento web, servicios y sistemas para clientes corporativos.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-    <script src="assets/js/jquery-3.6.4.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/aos.js"></script>
-    <script src="assets/js/main.js"></script>
+    <section class="section-shell skills-section" id="habilidades">
+      <div class="section-heading">
+        <span class="section-kicker">Stack</span>
+        <h2>Habilidades técnicas</h2>
+      </div>
+
+      <div class="skill-groups">
+        <article>
+          <h3>Mobile</h3>
+          <div class="tags">
+            <span>Android nativo</span>
+            <span>Kotlin</span>
+            <span>Java</span>
+            <span>React Native</span>
+            <span>TensorFlow Lite</span>
+            <span>Clean Architecture</span>
+          </div>
+        </article>
+
+        <article>
+          <h3>Arquitectura</h3>
+          <div class="tags">
+            <span>MVVM</span>
+            <span>SOLID</span>
+            <span>REST APIs</span>
+            <span>SOAP APIs</span>
+            <span>Retrofit</span>
+            <span>Dagger/Koin</span>
+            <span>SQLite</span>
+            <span>Realm</span>
+            <span>SharedPreferences</span>
+          </div>
+        </article>
+
+        <article>
+          <h3>Backend y datos</h3>
+          <div class="tags">
+            <span>PHP</span>
+            <span>.NET</span>
+            <span>C#</span>
+            <span>Python</span>
+            <span>MySQL</span>
+            <span>PostgreSQL</span>
+            <span>SQL Server</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell credentials" id="certificaciones">
+      <div class="section-heading">
+        <span class="section-kicker">Respaldo</span>
+        <h2>Educación y certificaciones</h2>
+        <p>
+          Formación universitaria, cursos técnicos y certificados vinculados a desarrollo móvil,
+          seguridad, backend y proyectos reales entregados.
+        </p>
+      </div>
+
+      <div class="credential-grid">
+        <a class="credential-card image-card featured-credential" href="assets/certificates/bachiller-ingenieria-sistemas.pdf" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/bachiller-ingenieria-sistemas.png" alt="Diploma de bachiller en Ingeniería de Sistemas">
+          <small>Universidad</small>
+          <span>Bachiller en Ingeniería de Sistemas, Computación e Informática</span>
+          <p>Universidad Católica Santo Toribio de Mogrovejo.</p>
+        </a>
+
+        <a class="credential-card image-card" href="assets/certificates/desarrollo-apps-moviles.pdf" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/desarrollo-apps-moviles.png" alt="Certificado de curso de desarrollo de apps móviles">
+          <small>Android</small>
+          <span>Curso de Desarrollo de Apps Móviles</span>
+          <p>Formación práctica enfocada en construcción de aplicaciones móviles.</p>
+        </a>
+
+        <a class="credential-card image-card" href="assets/certificates/java.pdf" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/java.png" alt="Certificado de Java">
+          <small>Backend / Mobile</small>
+          <span>Java</span>
+          <p>Base sólida para desarrollo Android nativo, lógica de negocio y mantenimiento de sistemas.</p>
+        </a>
+
+        <a class="credential-card image-card" href="assets/certificates/html-css.pdf" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/html-css.png" alt="Certificado de HTML y desarrollo web">
+          <small>Web</small>
+          <span>HTML y fundamentos web</span>
+          <p>Conocimientos para interfaces web, estructura semántica y publicación de contenido técnico.</p>
+        </a>
+
+        <a class="credential-card image-card" href="assets/certificates/introduccion-seguridad-informacion.pdf" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/introduccion-seguridad-informacion.png" alt="Certificado de introducción a la seguridad de la información">
+          <small>Seguridad</small>
+          <span>Introducción a la seguridad de la información</span>
+          <p>Fundamentos de protección de datos, buenas prácticas y gestión de riesgos técnicos.</p>
+        </a>
+
+        <a class="credential-card image-card" href="assets/certificates/administracion-seguridad-linux.pdf" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/administracion-seguridad-linux.png" alt="Diplomado de administración y seguridad en Linux">
+          <small>Infraestructura</small>
+          <span>Administración y seguridad en Linux</span>
+          <p>Administración de servidores, hardening básico y soporte a entornos técnicos.</p>
+        </a>
+
+        <a class="credential-card image-card" href="https://cert.efset.org/RRZ51a" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/ef-set-a2.png" alt="Certificado EF SET de inglés A2">
+          <small>Idiomas</small>
+          <span>Inglés A2</span>
+          <p>EF SET, credencial RRZ51a.</p>
+        </a>
+
+        <a class="credential-card image-card" href="assets/certificates/experiencia-ama-siade.pdf" target="_blank" rel="noreferrer">
+          <img src="assets/certificates/experiencia-ama-siade.png" alt="Certificado de experiencia del proyecto SIADE para AMA">
+          <small>Experiencia certificada</small>
+          <span>Proyecto SIADE - AMA</span>
+          <p>Reconocimiento de pescado apto o no apto para consumo con app Android e IA.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="section-shell contact-inner">
+        <div>
+          <span class="section-kicker">Contacto</span>
+          <h2>Hablemos de tu próxima app o plataforma móvil.</h2>
+        </div>
+        <div class="contact-actions">
+          <a class="button primary" href="mailto:alexcespedessanchez@gmail.com">alexcespedessanchez@gmail.com</a>
+          <a class="button secondary" href="tel:+51917141308">+51 917 141 308</a>
+          <a class="button secondary" href="https://github.com/ANDROFAST" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/alex-cespedes-sanchez-4b2874115/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="button secondary" href="https://www.youtube.com/channel/UCRvLbRipskHYeJuVcKQO1yQ" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Alex Céspedes Sánchez - Lima, Perú</p>
+    <a href="#inicio">Volver arriba</a>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
